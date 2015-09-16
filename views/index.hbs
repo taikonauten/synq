@@ -1,0 +1,18 @@
+
+
+<div data-create>
+  <input type="text">
+  <button class="button">create</button>
+</div>
+
+
+<h1>Instances</h1>
+<ul data-instances>
+  {{#each data}}
+  <li data-instance>
+    <a href="{{this.external}}">{{this.url}}</a>
+    <button id="start"  class="button">start</button>
+    <button id="stop"   class="button">stop</button>
+    <button id="remove" class="button">remove</button></li>
+  {{/each}}
+</ul>

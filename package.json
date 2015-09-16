@@ -14,5 +14,18 @@
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "babel-loader": "*",
+    "browser-request": "^0.3.3",
+    "grunt": "*",
+    "grunt-browser-sync": "*",
+    "grunt-contrib-imagemin": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-grunticon": "*",
+    "grunt-sass": "*",
+    "grunt-webpack": "*",
+    "load-grunt-tasks": "*",
+    "time-grunt": "*"
   }
 }
