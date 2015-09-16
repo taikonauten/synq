@@ -8,6 +8,7 @@
   },
   "author": "Haithem Bel Haj <haythem.belhaj@gmail.com> (http://haithembelhaj.github.io)",
   "license": "ISC",
+  "private": true,
   "dependencies": {
     "body-parser": "^1.13.3",
     "browser-sync": "^2.9.3",
@@ -18,14 +19,17 @@
   "devDependencies": {
     "babel-loader": "*",
     "browser-request": "^0.3.3",
+    "compass-importer": "0.0.3",
     "grunt": "*",
     "grunt-browser-sync": "*",
     "grunt-contrib-imagemin": "*",
     "grunt-contrib-watch": "*",
     "grunt-grunticon": "*",
     "grunt-sass": "*",
+    "grunt-svgmin": "*",
     "grunt-webpack": "*",
     "load-grunt-tasks": "*",
+    "svgmin": "^0.1.0",
     "time-grunt": "*"
   }
 }

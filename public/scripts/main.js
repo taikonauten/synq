@@ -60,10 +60,13 @@
 
 	var _componentsInstances2 = _interopRequireDefault(_componentsInstances);
 
+	var _componentsInstances3 = _interopRequireDefault(_componentsInstances);
+
 	__webpack_require__(8);
 
 	_libComponent2['default'].register(_componentsCreate2['default'], '[data-create]');
-	_libComponent2['default'].register(_componentsInstances2['default'], '[data-instances]');
+	_libComponent2['default'].register(_componentsInstances3['default'], '[data-instances]');
+	_libComponent2['default'].register(_componentsInstances2['default'], '[data-instance]');
 
 /***/ },
 /* 1 */
@@ -12645,6 +12648,11 @@
 	  button.on('click', function () {
 
 	    synq.start(input.value, function () {
+	      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	        args[_key] = arguments[_key];
+	      }
+
+	      console.log(args);
 
 	      input.value = '';
 	    });
@@ -13187,30 +13195,22 @@
 
 /***/ },
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	var _libSynq = __webpack_require__(5);
-
-	var synq = _interopRequireWildcard(_libSynq);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Instances = function Instances(el) {
 	  _classCallCheck(this, Instances);
 	};
 
-	exports['default'] = Instances;
-	module.exports = exports['default'];
-
-	// code here
+	exports["default"] = Instances;
+	module.exports = exports["default"];
 
 /***/ },
 /* 8 */

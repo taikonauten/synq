@@ -12,7 +12,6 @@ export default class Create{
 
       synq.start(input.value, (...args)=>{
 
-
         console.log(args);
 
         input.value = '';

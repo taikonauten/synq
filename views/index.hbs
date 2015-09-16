@@ -1,18 +1,23 @@
 
-
-<div data-create>
-  <input type="text">
-  <button class="button">create</button>
-</div>
+<header>
+  <img src="/assets/synq-logo.svg" alt="synq - browsersync to the fullest" />
+</header>
 
 
-<h1>Instances</h1>
-<ul data-instances>
-  {{#each data}}
-  <li data-instance>
-    <a href="{{this.external}}">{{this.url}}</a>
-    <button id="start"  class="button">start</button>
-    <button id="stop"   class="button">stop</button>
-    <button id="remove" class="button">remove</button></li>
-  {{/each}}
-</ul>
+<section class="creator" data-create>
+  <div class="creator-container"><input type="text" autofocus><button class="button">+</button></div>
+</section>
+
+
+<section class="instance-list">
+  <h2>Instances</h2>
+  <ul data-instances>
+    {{#each data}}
+    <li data-instance>
+      <a href="{{this.external}}">{{this.url}}</a>
+      <button id="start"  class="button">synq</button>
+      <button id="stop"   class="button">unsynq</button>
+      <button id="remove" class="button"><i class="remove"></i></button></li>
+    {{/each}}
+  </ul>
+</section>

@@ -9,6 +9,9 @@ module.exports = function (grunt){
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
+    //import libsass-compass
+    var compass = require('compass-importer');
+
     grunt.initConfig({
 
         pkg: require('./package.json'),
@@ -16,7 +19,7 @@ module.exports = function (grunt){
         config: {
             src: 'app',
             dest: 'public',
-            local: 'http://localhost:1337'
+            local: 'http://localhost:3000'
         },
 
         watch: {
@@ -33,8 +36,8 @@ module.exports = function (grunt){
                 tasks: ['imagemin']
             },
             svgs: {
-                files: ['<%= config.src %>/images/{,*/}*.svg'],
-                tasks: ['grunticon']
+                files: ['<%= config.src %>/assets/{,*/}*.svg'],
+                tasks: ['svgmin']
             }
         },
 
@@ -65,7 +68,11 @@ module.exports = function (grunt){
                     src: ['{,*/}*.scss'],
                     dest: '<%= config.dest %>/styles',
                     ext: '.css'
-                }]
+                }],
+                options: {
+                  includePaths: [ '.compass'],
+                  importer: compass
+                }
             }
         },
 
@@ -108,16 +115,28 @@ module.exports = function (grunt){
                     dest: '<%= config.dest %>/images'
                 }]
             }
+        },
+        svgmin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.src %>/assets',
+                    src: '**/*.svg',
+                    dest: '<%= config.dest %>/assets'
+                }]
+            }
         }
     });
 
     grunt.registerTask('img', [
+        'svgmin',
         'imagemin',
         'grunticon'
     ]);
 
 
     grunt.registerTask('dev', [
+        'svgmin',
         'sass',
         'webpack'
     ]);
