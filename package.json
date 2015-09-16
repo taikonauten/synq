@@ -9,6 +9,7 @@
   "author": "Haithem Bel Haj <haythem.belhaj@gmail.com> (http://haithembelhaj.github.io)",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.13.3",
     "browser-sync": "^2.9.3",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",

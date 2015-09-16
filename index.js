@@ -1,45 +1,60 @@
 
 var express = require('express');
-var synq = require('./lib/synq');
 var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
+var synq = require('./lib/synq');
 
 var app = express();
 
-app.engine('.hbs', exphbs({defaultLayout: 'single', extname: '.hbs'}));
-app.set('view engine', '.hbs');
-
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
+app.engine('.hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 app.get('/', function(req, res){
 
-  res.render('index', {})
+  res.render('index', {data: synq.get()})
 });
 
-app.get('/start/:url', function(req, res){
+app.post('/get', function(req, res){
 
-  synq.start(req.params.url, function(options){
+  res.json(synq.get(req.body.url));
+});
 
-    res.send(options.get('urls'));
+
+app.post('/start', function(req, res){
+
+  synq.start(req.body.url, function(instance){
+
+    res.json(instance);
   });
 });
 
-app.get('/stop/:url', function(req, res){
+app.post('/stop', function(req, res){
 
-  synq.stop(req.params.url);
-
-  res.send('ok');
-});
-
-
-app.get('/remove/:url', function(req, res){
-
-  synq.remove(req.params.url);
+  synq.stop(req.body.url);
 
   res.send('ok');
 });
 
 
+app.post('/remove', function(req, res){
 
+  synq.remove(req.box.url);
+
+  res.send('ok');
+});
+
+var server = app.listen(5000, function () {
+
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Example app listening at http://%s:%s', host, port);
+});
 
 
