@@ -91,21 +91,6 @@ module.exports = function (grunt){
             }
         },
 
-        grunticon: {
-            misc: {
-                files: [{
-
-                    expand: true,
-                    cwd: '<%= config.dest %>/images/svg',
-                    src: ['**/*.svg'],
-                    dest: '<%= config.dest %>/icons'
-                }],
-                options: {
-                    cssprefix: '.i-',
-                    enhanceSVG: true
-                }
-            }
-        },
         imagemin: {
             dist: {
                 files: [{

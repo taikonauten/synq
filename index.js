@@ -3,6 +3,8 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var synq = require('./lib/synq');
+var React = require('react');
+var ReactInstance = require('./lib/components/react-instance');
 
 var app = express();
 
@@ -18,7 +20,20 @@ app.set('view engine', '.hbs');
 
 app.get('/', function(req, res){
 
-  res.render('index', {data: synq.get()})
+  res.render('index', {data: synq.get()});
+});
+
+app.get('/react', function(req, res){
+
+  var ReactInstanceFactory = React.createFactory(ReactInstance);
+
+  var renderedComponent = React.renderToString(
+    
+        ReactInstanceFactory({active: false, external: 'TEST', url: 'TESTTEST'})
+  );
+
+  res.send(renderedComponent);
+
 });
 
 app.post('/get', function(req, res){
