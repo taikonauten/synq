@@ -1,8 +1,13 @@
-# START
+# Server
 
-node index.js
+`node index.js`
 
 
 # Developement
 
-grunt
+`grunt`
+
+
+# Testing
+
+`mocha`
