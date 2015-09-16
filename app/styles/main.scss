@@ -1,0 +1,78 @@
+@import "compass/reset";
+
+* {
+
+  box-sizing: border-box;
+}
+
+html, body {
+
+  margin: 0;
+  padding: 0;
+}
+
+header {
+
+  padding: 25px 0;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
+
+  img {
+
+    width: 300px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.creator {
+
+  margin: 50px auto 0;
+
+  &-container {
+
+    width: 66.666666666%;
+    margin: 0 auto;
+  }
+
+  input {
+
+    width: calc(100% - 60px);
+    height: 50px;
+    padding: 0 0 0 10px;
+    border: 2px solid #000;
+    border-right: transparent;
+  }
+
+  button {
+
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    cursor: pointer;
+    font-weight: bold;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+
+    // &::before {
+    //
+    //   content: "";
+    //   width: 70%;
+    //   height: 3px;
+    //   background: #000;
+    //   display: inline-block;
+    // }
+    //
+    // &::after {
+    //
+    //   content: "";
+    //   height: 70%;
+    //   width: 3px;
+    //   background: #000;
+    //   display: inline-block;
+    // }
+  }
+}

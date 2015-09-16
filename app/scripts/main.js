@@ -3,7 +3,7 @@ require('./lib/bling');
 
 import Component from './lib/component';
 import Create from './components/create';
-import Instances from './components/instances';
+import Instance from './components/instance';
 import Instances from './components/instances';
 
 
