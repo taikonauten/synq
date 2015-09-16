@@ -29,7 +29,7 @@ app.post('/stop', validate(stop));
 app.post('/remove', validate(remove));
 
 // start
-app.listen(5000, function () {
+app.listen(1337, function () {
 
   var addr = server.address();
 
@@ -77,7 +77,6 @@ function remove(req, res){
   return get(req, res);
 }
 
-
 function validate(next){
 
   return function(req, res){
@@ -89,6 +88,3 @@ function validate(next){
     res.send('Please Provide an URL');
   }
 }
-
-
-

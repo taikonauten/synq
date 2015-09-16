@@ -16,7 +16,7 @@ module.exports = function (grunt){
         config: {
             src: 'app',
             dest: 'public',
-            local: 'http://localhost:5000'
+            local: 'http://localhost:1337'
         },
 
         watch: {
