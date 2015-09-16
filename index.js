@@ -29,11 +29,12 @@ app.post('/stop', validate(stop));
 app.post('/remove', validate(remove));
 
 // start
-app.listen(1337, function () {
+var server = app.listen(1337, function () {
 
-  var addr = server.address();
+  var host = server.address().address;
+  var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', addr.host, addr.port);
+  console.log('Example app listening at http://%s:%s', host, port);
 });
 
 // export for testing
