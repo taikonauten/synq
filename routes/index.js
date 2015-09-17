@@ -4,7 +4,7 @@ var React = require('react');
 var synq = require('../lib/synq');
 
 var AppFactory = React.createFactory(require('../common/app.jsx'));
-var CreatorFactory = React.createFactory(require('../common/components/creator.jsx'));
+var CreatorFactory = React.createFactory(require('../common/components/synq-creator.jsx'));
 
 // exports
 module.exports._index = _index;
