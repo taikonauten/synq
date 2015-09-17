@@ -66,13 +66,20 @@
 
 	var React = __webpack_require__(9);
 	__webpack_require__(165);
+
 	var SynqCreator = __webpack_require__(166);
+	var SynqList = __webpack_require__(167);
 
 	_libComponent2['default'].register(_componentsCreate2['default'], '[data-create]');
 	_libComponent2['default'].register(_componentsInstances2['default'], '[data-instances]');
 	_libComponent2['default'].register(_componentsInstance2['default'], '[data-instance]');
 
 	React.render(React.createElement(SynqCreator, null), document.getElementById('sq'));
+
+	// Snag the initial state that was passed from the server side
+	var initialState = JSON.parse(document.getElementById('initial-state').innerHTML);
+
+	React.render(React.createElement(SynqList, { pages: initialState }), document.getElementById('synqList'));
 
 /***/ },
 /* 1 */
@@ -33867,7 +33874,13 @@
 
 	  addUrl: function addUrl() {
 	    console.log(synq);
-	    synq.add(this.state.value);
+
+	    var that = this;
+
+	    synq.add(this.state.value, function (r) {
+
+	      that.setState({ value: "", success: true });
+	    });
 	  },
 
 	  handleChange: function handleChange() {
@@ -33893,6 +33906,126 @@
 	            '+'
 	          )
 	        )
+	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(9),
+	    SynqInstance = __webpack_require__(168);
+
+	module.exports = React.createClass({
+	  displayName: 'exports',
+
+	  // getInitialState: function() {
+	  //
+	  //   return {pages: initialState};
+	  // },
+
+	  render: function render() {
+
+	    // Build list items of single instances
+	    var content = this.props.pages.map(function (page) {
+
+	      return React.createElement(SynqInstance, { active: page.active, external: page.external, url: page.url });
+	    });
+
+	    return React.createElement(
+	      'ul',
+	      { 'data-instances': true },
+	      content
+	    );
+	  }
+	});
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(9);
+
+	var synq = __webpack_require__(5);
+
+	module.exports = React.createClass({
+	  displayName: 'exports',
+
+	  getInitialState: function getInitialState() {
+
+	    return {
+	      active: this.props.active,
+	      external: this.props.external,
+	      url: this.props.url,
+	      deleted: false
+	    };
+	  },
+
+	  start: function start() {
+
+	    var that = this;
+
+	    synq.start(this.state.url, function (url) {
+
+	      console.log(url);
+
+	      that.setState({ active: true, external: url });
+	    });
+	  },
+
+	  stop: function stop() {
+
+	    var that = this;
+
+	    synq.stop(this.state.url, function (res) {
+
+	      that.setState({ active: false, external: '#' });
+	    });
+	  },
+
+	  remove: function remove() {
+
+	    var that = this;
+
+	    synq.remove(this.state.url, function () {
+
+	      that.setState({ deleted: true });
+	    });
+	  },
+
+	  render: function render() {
+
+	    //howy?????
+	    //if(this.state.deleted);
+
+	    return React.createElement(
+	      'li',
+	      { className: this.state.active },
+	      React.createElement(
+	        'a',
+	        { href: this.state.external },
+	        this.state.url
+	      ),
+	      React.createElement(
+	        'div',
+	        { id: 'start', onClick: this.start, className: 'button button-instance' },
+	        'start'
+	      ),
+	      React.createElement(
+	        'div',
+	        { id: 'stop', onClick: this.stop, className: 'button button-instance' },
+	        'stop'
+	      ),
+	      React.createElement(
+	        'div',
+	        { id: 'remove', onClick: this.remove, className: 'button button-instance' },
+	        'delete'
 	      )
 	    );
 	  }

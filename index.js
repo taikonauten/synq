@@ -3,7 +3,7 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes');
+var routes = require('./routes/index');
 
 var app = express();
 

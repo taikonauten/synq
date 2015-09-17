@@ -197,11 +197,26 @@ header {
       content: "";
       width: 11px;
       height: 11px;
-      background: turquoise;
       position: absolute;
       margin-top: 25px;
       transform: translateX(-20px) rotate(50deg);
-      transition: transform 0.3s cubic-bezier(0.24,.85,.74,1), background-color 0.2s linear;
+      transition: transform 0.3s cubic-bezier(0.24,.85,.74,1);
+    }
+
+    &.true {
+
+      &::before {
+
+        background: turquoise;
+      }
+    }
+
+    &.false {
+
+      &::before {
+
+        background: #000;
+      }
     }
 
     &:hover {
@@ -209,7 +224,6 @@ header {
       &::before {
 
         content: "";
-        background: #000;
         transform: translateX(-30px) rotate(225deg);
       }
     }

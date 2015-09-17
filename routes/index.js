@@ -1,7 +1,7 @@
 var synq = require('../lib/synq');
 
 // exports
-module.exports._index = _index;
+//module.exports._index = _index;
 module.exports.index = index;
 module.exports.get = get;
 module.exports.start = validate(start);
@@ -9,14 +9,16 @@ module.exports.stop = validate(stop);
 module.exports.add = validate(add);
 module.exports.remove = validate(remove);
 
-function _index(req, res){
-
-  res.render('index', {data: synq.get()});
-}
+// function _index(req, res){
+//
+//   res.render('index', {data: synq.get()});
+// }
 
 function index(req, res) {
 
-  res.render('index', {data: synq.get()});
+  var state = JSON.stringify(synq.get());
+
+  res.render('index', {state: state});
 }
 
 function get(req, res){
