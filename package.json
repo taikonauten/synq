@@ -33,9 +33,7 @@
     "grunt-sass": "*",
     "grunt-svgmin": "*",
     "grunt-webpack": "*",
-    "jsx-loader": "^0.13.2",
     "load-grunt-tasks": "*",
-    "react-loader": "^1.4.0",
     "supertest": "^1.1.0",
     "svgmin": "^0.1.0",
     "time-grunt": "*"
