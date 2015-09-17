@@ -3,9 +3,9 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var synq = require('./lib/synq');
+var routes = require('./routes');
 
 var React = require('react');
-var ReactInstance = require('./lib/components/react-instance');
 
 var app = express();
 
@@ -25,18 +25,22 @@ app.get('/', function(req, res){
   res.render('index', {data: synq.get()});
 });
 
-app.get('/react', function(req, res){
+// app.get('/react', function(req, res) {
+//
+//
+//
+//   // var ReactInstanceFactory = React.createFactory(ReactInstance);
+//   //
+//   // var renderedComponent = React.renderToString(
+//   //
+//   //       ReactInstanceFactory({active: false, external: 'TEST', url: 'TESTTEST'})
+//   // );
+//   //
+//   // res.render('index',{ react: renderedComponent});
+//
+// });
 
-  var ReactInstanceFactory = React.createFactory(ReactInstance);
-
-  var renderedComponent = React.renderToString(
-
-        ReactInstanceFactory({active: false, external: 'TEST', url: 'TESTTEST'})
-  );
-
-  res.send(renderedComponent);
-
-});
+app.get('/react', routes.index);
 
 // rest
 app.post('/get', get);
