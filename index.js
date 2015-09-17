@@ -4,8 +4,11 @@ var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var synq = require('./lib/synq');
 
+require('node-jsx').install();
+
 var React = require('react');
-var ReactInstance = require('./lib/components/react-instance');
+
+var synqApp = React.createFactory(require('./common/app.jsx'));
 
 var app = express();
 
@@ -16,8 +19,12 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.engine('.hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
-app.set('view engine', '.hbs');
+// app.engine('.hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
+// app.set('view engine', '.hbs');
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 // index
 app.get('/', function(req, res){
@@ -27,14 +34,7 @@ app.get('/', function(req, res){
 
 app.get('/react', function(req, res){
 
-  var ReactInstanceFactory = React.createFactory(ReactInstance);
-
-  var renderedComponent = React.renderToString(
-
-        ReactInstanceFactory({active: false, external: 'TEST', url: 'TESTTEST'})
-  );
-
-  res.send(renderedComponent);
+  res.render('index', { title: 'synq', foo: {bar:'baz'} });
 
 });
 
