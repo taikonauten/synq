@@ -5,8 +5,6 @@ var bodyParser = require('body-parser');
 var synq = require('./lib/synq');
 var routes = require('./routes');
 
-var React = require('react');
-
 var app = express();
 
 app.use(express.static('public'));
@@ -19,27 +17,17 @@ app.use(bodyParser.urlencoded({
 app.engine('.hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
+// app.set('views', __dirname + '/views');
+// app.set('view engine', 'jsx');
+// app.engine('jsx', require('express-react-views').createEngine());
+
 // index
 app.get('/', function(req, res){
 
   res.render('index', {data: synq.get()});
 });
 
-// app.get('/react', function(req, res) {
-//
-//
-//
-//   // var ReactInstanceFactory = React.createFactory(ReactInstance);
-//   //
-//   // var renderedComponent = React.renderToString(
-//   //
-//   //       ReactInstanceFactory({active: false, external: 'TEST', url: 'TESTTEST'})
-//   // );
-//   //
-//   // res.render('index',{ react: renderedComponent});
-//
-// });
-
+// reactive routes
 app.get('/react', routes.index);
 
 // rest
