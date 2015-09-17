@@ -29,8 +29,8 @@ module.exports = function (grunt){
                 tasks: ['sass']
             },
             scripts: {
-                files: ['<%= config.src %>/scripts/{,*/}*.js'],
-                tasks: ['webpack']
+                files: ['<%= config.src %>/scripts/{,*/}*.{js,jsx}'],
+                tasks: ['webpack:dev']
             },
             images: {
                 files: ['<%= config.src %>/images/{,*/}*.{png,jpg,jpeg,gif}'],
@@ -53,6 +53,11 @@ module.exports = function (grunt){
                     loaders: [
                         {
                           test: /\.js$/,
+                          exclude: /node_modules/,
+                          loader: 'babel-loader'
+                        },
+                        {
+                          test: /\.jsx$/,
                           exclude: /node_modules/,
                           loader: 'babel-loader'
                         }

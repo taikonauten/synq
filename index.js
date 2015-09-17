@@ -21,7 +21,7 @@ app.set('view engine', '.hbs');
 app.get('/', routes.index);
 
 // reactive routes
-app.get('/react', routes.index);
+//app.get('/react', routes.index);
 
 // REST
 app.post('/get', routes.get);

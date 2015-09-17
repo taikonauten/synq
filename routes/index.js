@@ -1,10 +1,4 @@
-var JSX = require('node-jsx').install({extension: '.jsx'});
-var React = require('react');
-
 var synq = require('../lib/synq');
-
-var AppFactory = React.createFactory(require('../common/app.jsx'));
-var CreatorFactory = React.createFactory(require('../common/components/synq-creator.jsx'));
 
 // exports
 module.exports._index = _index;
@@ -22,13 +16,7 @@ function _index(req, res){
 
 function index(req, res) {
 
-  var synqListMarkup = React.renderToString(AppFactory({data: synq.get()}));
-  var synqCreatorMarkup = React.renderToString(CreatorFactory());
-
-  res.render('index', {
-    synqCreator: synqCreatorMarkup,
-    synqList: synqListMarkup
-  });
+  res.render('index', {data: synq.get()});
 }
 
 function get(req, res){
