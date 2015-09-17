@@ -3,7 +3,8 @@ var React = require('react');
 
 var synq = require('../lib/synq');
 
-var App = React.createFactory(require('../common/app.jsx'));
+var AppFactory = React.createFactory(require('../common/app.jsx'));
+var CreatorFactory = React.createFactory(require('../common/components/creator.jsx'));
 
 // exports
 module.exports._index = _index;
@@ -21,11 +22,12 @@ function _index(req, res){
 
 function index(req, res) {
 
-  var synqList = React.renderToString(App({data: synq.get()}));
+  var synqListMarkup = React.renderToString(AppFactory({data: synq.get()}));
+  var synqCreatorMarkup = React.renderToString(CreatorFactory());
 
   res.render('index', {
-
-    synqList: synqList
+    synqQreator: synqCreatorMarkup,
+    synqList: synqListMarkup
   });
 }
 
@@ -82,4 +84,3 @@ function validate(next){
     res.send('Please Provide an URL');
   }
 }
-
