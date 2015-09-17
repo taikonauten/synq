@@ -1,7 +1,6 @@
 # osx
 .DS_Store
 
-
 # Grunt
 .grunt
 .compass/
