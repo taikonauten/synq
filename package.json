@@ -34,6 +34,7 @@
     "grunt-svgmin": "*",
     "grunt-webpack": "*",
     "load-grunt-tasks": "*",
+    "react": "^0.13.3",
     "supertest": "^1.1.0",
     "svgmin": "^0.1.0",
     "time-grunt": "*"

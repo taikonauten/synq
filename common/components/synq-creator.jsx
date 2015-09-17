@@ -10,13 +10,26 @@ module.exports = synqCreator = React.createClass({
     }
   },
 
+  addUrl: function() {
+
+    //nothing yet. hb killed it. thanx buddy. i hate you.
+  },
+
+  handleChange: function() {
+
+    this.setState({value: event.target.value});
+
+  },
+
   render: function() {
 
     return (
-      <div className="creator-container">
-        <input type="text" placeholder="+" autofocus />
-        <div className="button" tabindex="0"><span>+</span></div>
-      </div>
+      <form onSubmit={this.submit}>
+        <div className="creator-container">
+          <input type="text" value={this.value} onChange={this.handleChange} placeholder="+" autofocus />
+          <div className="button" tabindex="0" onClick={this.addUrl}><span>+</span></div>
+        </div>
+      </form>
     );
   }
 });
