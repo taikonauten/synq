@@ -56,17 +56,19 @@
 
 	var _componentsCreate2 = _interopRequireDefault(_componentsCreate);
 
-	var _componentsInstances = __webpack_require__(7);
+	var _componentsInstance = __webpack_require__(7);
+
+	var _componentsInstance2 = _interopRequireDefault(_componentsInstance);
+
+	var _componentsInstances = __webpack_require__(8);
 
 	var _componentsInstances2 = _interopRequireDefault(_componentsInstances);
 
-	var _componentsInstances3 = _interopRequireDefault(_componentsInstances);
-
-	__webpack_require__(8);
+	__webpack_require__(9);
 
 	_libComponent2['default'].register(_componentsCreate2['default'], '[data-create]');
-	_libComponent2['default'].register(_componentsInstances3['default'], '[data-instances]');
-	_libComponent2['default'].register(_componentsInstances2['default'], '[data-instance]');
+	_libComponent2['default'].register(_componentsInstances2['default'], '[data-instances]');
+	_libComponent2['default'].register(_componentsInstance2['default'], '[data-instance]');
 
 /***/ },
 /* 1 */
@@ -12643,9 +12645,14 @@
 	  _classCallCheck(this, Create);
 
 	  var input = el.querySelector('input');
+	  var form = el.querySelector('form');
 	  var button = el.querySelector('.button');
 
-	  button.on('click', function () {
+	  form.on('submit', create);
+
+	  function create(e) {
+
+	    e.preventDefault();
 
 	    synq.start(input.value, function () {
 	      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
@@ -12656,7 +12663,7 @@
 
 	      input.value = '';
 	    });
-	  });
+	  }
 	};
 
 	exports['default'] = Create;
@@ -13195,6 +13202,85 @@
 
 /***/ },
 /* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var _libSynq = __webpack_require__(5);
+
+	var synq = _interopRequireWildcard(_libSynq);
+
+	var Instance = (function () {
+	  function Instance(el) {
+	    _classCallCheck(this, Instance);
+
+	    var start = el.querySelector('#start');
+	    var stop = el.querySelector('#stop');
+	    var remove = el.querySelector('#remove');
+
+	    this.url = el.querySelector('a').innerText;
+
+	    start.on('click', this.start.bind(this));
+	    stop.on('click', this.stop.bind(this));
+	    remove.on('click', this.remove.bind(this));
+	  }
+
+	  _createClass(Instance, [{
+	    key: 'start',
+	    value: function start() {
+
+	      synq.start(this.url, function () {
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	          args[_key] = arguments[_key];
+	        }
+
+	        console.log(args);
+	      });
+	    }
+	  }, {
+	    key: 'stop',
+	    value: function stop() {
+
+	      synq.stop(this.url, function () {
+	        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	          args[_key2] = arguments[_key2];
+	        }
+
+	        console.log(args);
+	      });
+	    }
+	  }, {
+	    key: 'remove',
+	    value: function remove() {
+
+	      synq.remove(this.url, function () {
+	        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+	          args[_key3] = arguments[_key3];
+	        }
+
+	        console.log(args);
+	      });
+	    }
+	  }]);
+
+	  return Instance;
+	})();
+
+	exports['default'] = Instance;
+	module.exports = exports['default'];
+
+/***/ },
+/* 8 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -13213,7 +13299,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	/**
