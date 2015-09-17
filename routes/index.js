@@ -3,9 +3,9 @@ var React = require('react');
 
 var synq = require('../lib/synq');
 
-var ReactInstance = React.createFactory(require('../common/components/react-instance.jsx'));
+var App = React.createFactory(require('../common/app.jsx'));
 
-
+// exports
 module.exports._index = _index;
 module.exports.index = index;
 module.exports.get = get;
@@ -21,11 +21,11 @@ function _index(req, res){
 
 function index(req, res) {
 
-  var markup = React.renderToString(ReactInstance({ active: true, external: "http://dietaikonauten.com", url: "YAYAYAY" }));
+  var synqList = React.renderToString(App({data: synq.get()}));
 
   res.render('index', {
 
-    markup: markup
+    synqList: synqList
   });
 }
 

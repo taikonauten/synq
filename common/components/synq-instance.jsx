@@ -1,8 +1,6 @@
 var React = require('react');
 
-module.exports = ReactInstance = React.createClass({
-
-  //displayName: 'ReactInstance',
+module.exports = synqInstance = React.createClass({
 
   getInitialState: function() {
 

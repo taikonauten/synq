@@ -1,7 +1,6 @@
-var JSX = require('node-jsx').install();
-var React = require('react');
-
-var instance = require('./components/react-instance.jsx');
+var JSX = require('node-jsx').install(),
+    React = require('react'),
+    ReactInstance = require('./components/synq-list.jsx');
 
 module.exports = synqApp = React.createClass({
 
@@ -21,8 +20,9 @@ module.exports = synqApp = React.createClass({
 
   //render the app
   render: function() {
+
     return (
-      <h1>YAY MOTHERFUCKER!</h1>
+      <synqList pages={this.props.pages} />
     );
   }
 

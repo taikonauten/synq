@@ -5,12 +5,7 @@
 
 
 <section class="creator" data-create>
-
-  <div class="creator-container">
-    <input type="text" placeholder="+" autofocus>
-    <div class="button" tabindex="0"><span>+</span></div>
-  </div>
-
+  {{{synqCreator}}}
   <!-- from HB <form action="#">
     <div class="creator-container"><input type="text" autofocus><button class="button">+</button></div>
   </form> -->
@@ -20,18 +15,6 @@
 <section class="instance-list">
   <div class="instance-container">
     <h2>active synqs</h2>
-    <ul data-instances>
-
-      {{#each data}}
-        <li data-instance>
-          <a href="{{this.external}}">{{this.url}}</a>
-          <div id="start"  class="button button-instance">start synq</div>
-          <div id="stop"   class="button button-instance">stop unsynq</div>
-          <div id="remove" class="button button-instance">delete synq</div>
-        </li>
-      {{/each}}
-    </ul>
+    {{{synqList}}}
   </div>
 </section>
-
-<section id="react">{{{markup}}}</section>
