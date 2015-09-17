@@ -1,6 +1,6 @@
 var JSX = require('node-jsx').install(),
     React = require('react'),
-    ReactInstance = React.createFactory(require('./common/components/react-instance'));
+    ReactInstance = React.createFactory(require('./common/components/react-instance.jsx'));
 
 module.exports = {
 
