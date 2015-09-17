@@ -55,12 +55,7 @@ module.exports = function (grunt){
                           test: /\.js$/,
                           exclude: /node_modules/,
                           loader: 'babel-loader'
-                        }//,
-                        // {
-                        //   test: /\.jsx$/,
-                        //   exclude: /node_modules/,
-                        //   loader: "jsx-loader"
-                        // }
+                        }
                     ]
                 },
                 optimize:{
@@ -125,8 +120,7 @@ module.exports = function (grunt){
 
     grunt.registerTask('img', [
         'svgmin',
-        'imagemin',
-        'grunticon'
+        'imagemin'
     ]);
 
 
