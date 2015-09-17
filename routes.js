@@ -1,6 +1,7 @@
 var JSX = require('node-jsx').install(),
     React = require('react'),
-    ReactInstance = React.createFactory(require('./common/components/react-instance.jsx'));
+    App = React.createFactory(require('./common/app.jsx')),
+    synq = require('./lib/synq');
 
 module.exports = {
 
@@ -13,11 +14,11 @@ module.exports = {
 
     //var markup = React.createElement(ReactInstance, { active: true, external: "http://dietaikonauten.com", url: "YAYAYAY" });
 
-    var markup = React.renderToString(ReactInstance({ active: true, external: "http://dietaikonauten.com", url: "YAYAYAY" }));
+    var markup = React.renderToString(App({data: synq.get()}));
 
     res.render('index', {
 
-      markup: markup
+      synqList: synqList
     });
   }
 
