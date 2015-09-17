@@ -18,6 +18,7 @@ module.exports = function (grunt){
 
         config: {
             src: 'app',
+            serverSrc: 'common',
             dest: 'public',
             local: 'http://localhost:5000'
         },
@@ -50,7 +51,16 @@ module.exports = function (grunt){
                 },
                 module: {
                     loaders: [
-                        { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
+                        {
+                          test: /\.js$/,
+                          exclude: /node_modules/,
+                          loader: 'babel-loader'
+                        }//,
+                        // {
+                        //   test: /\.jsx$/,
+                        //   exclude: /node_modules/,
+                        //   loader: "jsx-loader"
+                        // }
                     ]
                 },
                 optimize:{
