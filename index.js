@@ -18,7 +18,7 @@ app.engine('.hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
 // index
-app.get('/', routes._index);
+app.get('/', routes.index);
 
 // reactive routes
 app.get('/react', routes.index);

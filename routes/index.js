@@ -26,7 +26,7 @@ function index(req, res) {
   var synqCreatorMarkup = React.renderToString(CreatorFactory());
 
   res.render('index', {
-    synqQreator: synqCreatorMarkup,
+    synqCreator: synqCreatorMarkup,
     synqList: synqListMarkup
   });
 }

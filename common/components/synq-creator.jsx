@@ -13,9 +13,10 @@ module.exports = synqCreator = React.createClass({
   render: function() {
 
     return (
-      <ul data-instances>
-        {content}
-      </ul>
+      <div className="creator-container">
+        <input type="text" placeholder="+" autofocus />
+        <div className="button" tabindex="0"><span>+</span></div>
+      </div>
     );
   }
 });
