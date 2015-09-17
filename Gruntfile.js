@@ -20,8 +20,7 @@ module.exports = function (grunt){
             src: 'app',
             serverSrc: 'common',
             dest: 'public',
-            serverDest: 'lib',
-            local: 'http://localhost:3000'
+            local: 'http://localhost:5000'
         },
 
         watch: {
