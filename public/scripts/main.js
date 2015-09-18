@@ -33928,20 +33928,14 @@
 
 	    var that = this;
 
-	    controller.start(this.props.page.url, function () {
-
-	      //that.state.active = true;
-	    });
+	    controller.start(this.props.page.url);
 	  },
 
 	  stop: function stop() {
 
 	    var that = this;
 
-	    controller.stop(this.props.page.url, function () {
-
-	      //that.state.active = false;
-	    });
+	    controller.stop(this.props.page.url);
 	  },
 
 	  remove: function remove() {

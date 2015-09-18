@@ -12,20 +12,14 @@ module.exports = React.createClass({
 
     var that = this;
 
-    controller.start(this.props.page.url, function(){
-
-      //that.state.active = true;
-    });
+    controller.start(this.props.page.url);
   },
 
   stop: function() {
 
     var that = this;
 
-    controller.stop(this.props.page.url, function(){
-
-      //that.state.active = false;
-    });
+    controller.stop(this.props.page.url);
   },
 
   remove: function() {
