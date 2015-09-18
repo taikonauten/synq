@@ -33873,7 +33873,6 @@
 	  },
 
 	  addUrl: function addUrl() {
-	    console.log(synq);
 
 	    var that = this;
 
@@ -33923,22 +33922,33 @@
 	module.exports = React.createClass({
 	  displayName: 'exports',
 
-	  // getInitialState: function() {
-	  //
-	  //   return {pages: initialState};
-	  // },
+	  getInitialState: function getInitialState() {
+
+	    return { pages: this.props.pages };
+	  },
+
+	  onUpdate: function onUpdate(pages) {
+
+	    this.setState({
+	      pages: pages
+	    });
+	  },
 
 	  render: function render() {
 
+	    var that = this;
+
 	    // Build list items of single instances
 	    var content = this.props.pages.map(function (page) {
+
+	      if (page.deleted) return;
 
 	      return React.createElement(SynqInstance, { active: page.active, external: page.external, url: page.url });
 	    });
 
 	    return React.createElement(
 	      'ul',
-	      { 'data-instances': true },
+	      null,
 	      content
 	    );
 	  }
@@ -33996,6 +34006,7 @@
 	    synq.remove(this.state.url, function () {
 
 	      that.setState({ deleted: true });
+	      this.props.onUpdate(that.state);
 	    });
 	  },
 

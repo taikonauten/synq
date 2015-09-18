@@ -11,12 +11,11 @@ module.exports = React.createClass({
   },
 
   addUrl: function() {
-    console.log(synq);
 
     var that = this;
 
     synq.add(this.state.value,function(r){
-      
+
       that.setState({value:"",success:true});
 
     });
