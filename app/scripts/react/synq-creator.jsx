@@ -1,5 +1,5 @@
 var React = require('react');
-var synq = require('../lib/synq');
+var controller = require('../controller/app');
 
 module.exports = React.createClass({
 
@@ -10,29 +10,33 @@ module.exports = React.createClass({
     }
   },
 
-  addUrl: function() {
+  addUrl: function(e) {
 
     var that = this;
 
-    synq.add(this.state.value,function(r){
+    e.preventDefault();
 
-      that.setState({value:"",success:true});
+    controller.add(this.state.value, function(resp){
 
+      console.log('add', resp);
+
+      that.setState({
+        value : ''
+      })
     });
   },
 
   handleChange: function() {
 
     this.setState({value: event.target.value});
-
   },
 
   render: function() {
 
     return (
-      <form onSubmit={this.submit}>
+      <form onSubmit={this.addUrl}>
         <div className="creator-container">
-          <input type="text" value={this.value} onChange={this.handleChange} placeholder="+" autofocus />
+          <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="+" autofocus />
           <div className="button" tabIndex="0"><span onClick={this.addUrl}>+</span></div>
         </div>
       </form>

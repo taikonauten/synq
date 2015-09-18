@@ -27,6 +27,7 @@
     "browser-request": "^0.3.3",
     "chai": "^3.2.0",
     "compass-importer": "0.0.3",
+    "event-emitter": "^0.3.3",
     "grunt": "*",
     "grunt-browser-sync": "*",
     "grunt-contrib-imagemin": "*",
