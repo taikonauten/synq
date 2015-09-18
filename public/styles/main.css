@@ -200,6 +200,8 @@ header {
       background: #000; }
     .instance-container ul li.offline #stop {
       display: none; }
+    .instance-container ul li.offline #qr {
+      display: none; }
     .instance-container ul li:hover::before {
       content: "";
       transform: translateX(-30px) rotate(225deg); }
