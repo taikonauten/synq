@@ -21545,12 +21545,22 @@
 
 	  start: function start() {
 
-	    controller.start(this.state.url);
+	    var that = this;
+
+	    controller.start(this.state.url, function () {
+
+	      that.state.active = true;
+	    });
 	  },
 
 	  stop: function stop() {
 
-	    controller.stop(this.state.url);
+	    var that = this;
+
+	    controller.stop(this.state.url, function () {
+
+	      that.state.active = false;
+	    });
 	  },
 
 	  remove: function remove() {
