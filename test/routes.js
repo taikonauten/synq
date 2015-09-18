@@ -14,8 +14,6 @@ describe('TEST Routes', function(){
 
       db.setPath('test');
 
-      //console.log('destroy');
-
       // launch the app
       app = require('../index.js');
       session = request.agent(app);
@@ -30,10 +28,16 @@ describe('TEST Routes', function(){
     it('should respond with an array', function(done){
       request(app)
         .post('/add')
-        .send({url: 'www.test.de'})
+        .send({url: 'https://www.reddit.com'})
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(200, {url:'www.test.de', active: false}, done);
+        .expect(function(res){
+
+          expect(res.body).to.have.all.keys('url', 'active', 'qr');
+          expect(res.body.url).to.equal('https://www.reddit.com');
+          expect(res.body.active).to.equal(false);
+        })
+        .expect(200, done);
     });
 
     it('should respond with a NOT FOUND error', function(done){
@@ -52,7 +56,15 @@ describe('TEST Routes', function(){
         .send({url: null})
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(200, [{url:'www.test.de', active: false}], done);
+        .expect(function(res){
+
+          var instance = res.body[0];
+
+          expect(instance).to.have.all.keys('url', 'active', 'qr');
+          expect(instance.url).to.equal('https://www.reddit.com');
+          expect(instance.active).to.equal(false);
+        })
+        .expect(200, done);
     });
 
     it('should respond with a NOT FOUND error', function(done){
@@ -61,7 +73,7 @@ describe('TEST Routes', function(){
         .send({url: 'www.whatever.com'})
         .expect(404, done);
     });
-  })
+  });
 
   describe('POST /start', function(){
 
@@ -77,7 +89,7 @@ describe('TEST Routes', function(){
 
           body = res.body;
 
-          expect(body).to.have.all.keys('url', 'active', 'port', 'external');
+          expect(body).to.have.all.keys('url', 'active', 'port', 'external', 'qr');
           expect(body.active).to.equal(true);
         })
         .expect(200, done);
@@ -91,7 +103,11 @@ describe('TEST Routes', function(){
         .expect('Content-Type', /json/)
         .expect(function(res){
 
-          expect(res.body).to.deep.equal(body);
+          var instance = res.body;
+
+          expect(res.body).to.have.all.keys('url', 'active', 'qr','port', 'external');
+          expect(res.body.url).to.equal(body.url);
+          expect(res.body.active).to.equal(body.active);
         })
         .expect(200, done);
     });
@@ -104,7 +120,7 @@ describe('TEST Routes', function(){
         .expect('Content-Type', /json/)
         .expect(function(res){
 
-          expect(res.body).to.include(body);
+          expect(_.pluck(res.body, 'url')).to.contain(body.url);
         })
         .expect(200, done);
     });
