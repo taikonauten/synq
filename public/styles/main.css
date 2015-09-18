@@ -214,6 +214,8 @@ header {
   color: #fff;
   width: 60px;
   height: 60px;
-  cursor: pointer; }
+  cursor: pointer;
+  line-height: 55px;
+  text-align: center; }
   .button-instance + .button-instance {
     margin-left: 10px; }

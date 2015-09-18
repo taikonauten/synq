@@ -5,22 +5,16 @@ module.exports = React.createClass({
 
   getInitialState: function() {
 
-    return {
-
-      active: this.props.active,
-      external: this.props.external,
-      url: this.props.url,
-      deleted: false
-    }
+    return {showQr: false};
   },
 
   start: function() {
 
     var that = this;
 
-    controller.start(this.state.url, function(){
+    controller.start(this.props.page.url, function(){
 
-      that.state.active = true;
+      //that.state.active = true;
     });
   },
 
@@ -28,26 +22,32 @@ module.exports = React.createClass({
 
     var that = this;
 
-    controller.stop(this.state.url, function(){
+    controller.stop(this.props.page.url, function(){
 
-      that.state.active = false;
+      //that.state.active = false;
     });
   },
 
   remove: function() {
 
-    controller.remove(this.state.url);
+    controller.remove(this.props.page.url);
   },
 
   render: function() {
 
+    console.log('render', this.state);
 
+    var page = this.props.page;
+    
     return (
-      <li className={this.state.active? 'true': 'false'}>
-        <a href={this.state.external} target="_blank">{this.state.url}</a>
+      <li key={page.url} className={page.active? 'true': 'false'}>
+        <a href={page.external} target="_blank">{page.url}</a>
         <div id="start" onClick={this.start}  className="button button-instance">start</div>
+        <div id="qr" onClick={this.showQr}  className="button button-instance">QR</div>
         <div id="stop" onClick={this.stop}   className="button button-instance">stop</div>
         <div id="remove" onClick={this.remove} className="button button-instance">delete</div>
+        <img src={page.qr} onClick={this.hideQr} className={this.state.showQr? 'active':''}/>
+        
       </li>
     );
   }

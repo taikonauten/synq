@@ -63,6 +63,8 @@
 
 	controller.on('change', function (state) {
 
+	  console.log('change', state);
+
 	  React.render(React.createElement(SynqList, { pages: state }), document.getElementById('synqList'));
 	});
 
@@ -21488,28 +21490,12 @@
 	module.exports = React.createClass({
 	  displayName: 'exports',
 
-	  getInitialState: function getInitialState() {
-
-	    return { pages: this.props.pages };
-	  },
-
-	  onUpdate: function onUpdate(pages) {
-
-	    this.setState({
-	      pages: pages
-	    });
-	  },
-
 	  render: function render() {
-
-	    var that = this;
 
 	    // Build list items of single instances
 	    var content = this.props.pages.map(function (page) {
 
-	      if (page.deleted) return;
-
-	      return React.createElement(SynqInstance, { active: page.active, external: page.external, url: page.url });
+	      return React.createElement(SynqInstance, { page: page });
 	    });
 
 	    return React.createElement(
@@ -21534,22 +21520,16 @@
 
 	  getInitialState: function getInitialState() {
 
-	    return {
-
-	      active: this.props.active,
-	      external: this.props.external,
-	      url: this.props.url,
-	      deleted: false
-	    };
+	    return { showQr: false };
 	  },
 
 	  start: function start() {
 
 	    var that = this;
 
-	    controller.start(this.state.url, function () {
+	    controller.start(this.props.page.url, function () {
 
-	      that.state.active = true;
+	      //that.state.active = true;
 	    });
 	  },
 
@@ -21557,31 +21537,40 @@
 
 	    var that = this;
 
-	    controller.stop(this.state.url, function () {
+	    controller.stop(this.props.page.url, function () {
 
-	      that.state.active = false;
+	      //that.state.active = false;
 	    });
 	  },
 
 	  remove: function remove() {
 
-	    controller.remove(this.state.url);
+	    controller.remove(this.props.page.url);
 	  },
 
 	  render: function render() {
 
+	    console.log('render', this.state);
+
+	    var page = this.props.page;
+
 	    return React.createElement(
 	      'li',
-	      { className: this.state.active ? 'true' : 'false' },
+	      { key: page.url, className: page.active ? 'true' : 'false' },
 	      React.createElement(
 	        'a',
-	        { href: this.state.external, target: '_blank' },
-	        this.state.url
+	        { href: page.external, target: '_blank' },
+	        page.url
 	      ),
 	      React.createElement(
 	        'div',
 	        { id: 'start', onClick: this.start, className: 'button button-instance' },
 	        'start'
+	      ),
+	      React.createElement(
+	        'div',
+	        { id: 'qr', onClick: this.showQr, className: 'button button-instance' },
+	        'QR'
 	      ),
 	      React.createElement(
 	        'div',
@@ -21592,7 +21581,8 @@
 	        'div',
 	        { id: 'remove', onClick: this.remove, className: 'button button-instance' },
 	        'delete'
-	      )
+	      ),
+	      React.createElement('img', { src: page.qr, onClick: this.hideQr, className: this.state.showQr ? 'active' : '' })
 	    );
 	  }
 	});
