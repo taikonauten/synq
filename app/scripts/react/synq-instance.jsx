@@ -43,6 +43,7 @@ module.exports = React.createClass({
     synq.remove(this.state.url,function(){
 
       that.setState({deleted: true});
+      this.props.onUpdate(that.state);
     });
   },
 
