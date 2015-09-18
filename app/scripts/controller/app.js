@@ -1,8 +1,8 @@
 
 var ee = require('event-emitter');
+var _ = require('lodash');
 var synq = require('../lib/synq');
 var controller = ee({});
-
 
 var state;
 
@@ -23,20 +23,48 @@ methods.forEach(function(method){
 
       if(callback) callback(resp.body);
 
-      controller.emit('get', resp.body);
-
-      synq.get(null, function(err, resp){
-
-        if(err) return console.log(err);
-
-        console.log(resp.body);
-
-        controller.emit('change', resp.body);
-      })
+      controller.emit(method, resp.body);
+      controller.emit('change', changeState(method, value, resp.body));
     });
   }
 });
 
+function changeState(method, url, data){
 
+  if(method == 'add'){
+
+    state = state.concat(data);
+  }
+
+  if(method == 'remove'){
+
+    state = state.filter(function(s){ return s.url !== url});
+  }
+
+
+  if(method == 'start' || method == 'stop'){
+
+    upsert(state, {url:url}, data)
+  }
+
+
+  return state;
+}
+
+
+function upsert(arr, key, newval) {
+
+  var match = _.find(arr, key);
+
+  if(match){
+
+    var index = _.indexOf(arr, _.find(arr, key));
+    arr.splice(index, 1, newval);
+
+  } else {
+
+    arr.push(newval);
+  }
+};
 
 module.exports = controller;
