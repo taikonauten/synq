@@ -94,7 +94,6 @@ header {
     padding: 0 10px;
     border: none;
     font-size: 24px;
-    z-index: 1337;
     transition: box-shadow 0.45s linear; }
     .creator input::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.9);
@@ -195,13 +194,17 @@ header {
       transition: transform 0.3s cubic-bezier(0.24, 0.85, 0.74, 1); }
     .instance-container ul li.online::before {
       background: turquoise; }
+    .instance-container ul li.online #start {
+      display: none; }
     .instance-container ul li.offline::before {
       background: #000; }
+    .instance-container ul li.offline #stop {
+      display: none; }
     .instance-container ul li:hover::before {
       content: "";
       transform: translateX(-30px) rotate(225deg); }
   .instance-container li a {
-    width: calc(100% - 270px);
+    width: calc(100% - 200px);
     font-size: 20px;
     color: #000;
     text-decoration: none;
@@ -210,14 +213,22 @@ header {
     line-height: 60px; }
   .instance-container li .qrImage {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
     visibility: hidden;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); }
+    background-color: rgba(255, 255, 255, 0.99); }
+    .instance-container li .qrImage img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
     .instance-container li .qrImage.active {
       visibility: visible; }
   .instance-container li .icon {
@@ -240,6 +251,5 @@ header {
   cursor: pointer;
   line-height: 55px;
   text-align: center;
-  position: relative; }
-  .button-instance + .button-instance {
-    margin-left: 10px; }
+  position: relative;
+  margin-left: 10px; }
