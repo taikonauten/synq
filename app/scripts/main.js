@@ -23,8 +23,6 @@ React.render(
 
 controller.on('change', function(state){
 
-  console.log('change', state);
-
   React.render(
     <SynqList pages={state} />,
     document.getElementById('synqList')

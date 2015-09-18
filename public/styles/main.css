@@ -208,6 +208,18 @@ header {
     font-weight: 400;
     height: 100%;
     line-height: 60px; }
+  .instance-container li img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    visibility: hidden;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .instance-container li img.active {
+      visibility: visible; }
 
 .button-instance {
   background: #000;

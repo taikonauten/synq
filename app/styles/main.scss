@@ -241,6 +241,20 @@ header {
       height: 100%;
       line-height: 60px;
     }
+
+    img{
+
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      visibility: hidden;
+      @include translate(-50%, -50%);
+
+      &.active{
+
+        visibility: visible;
+      }
+    }
   }
 }
 

@@ -21548,9 +21548,22 @@
 	    controller.remove(this.props.page.url);
 	  },
 
-	  render: function render() {
+	  toggleQr: function toggleQr() {
 
-	    console.log('render', this.state);
+	    this.state.showQr ? this.hideQr() : this.showQr();
+	  },
+
+	  showQr: function showQr() {
+
+	    this.setState({ showQr: true });
+	  },
+
+	  hideQr: function hideQr() {
+
+	    this.setState({ showQr: false });
+	  },
+
+	  render: function render() {
 
 	    var page = this.props.page;
 
@@ -21569,7 +21582,7 @@
 	      ),
 	      React.createElement(
 	        'div',
-	        { id: 'qr', onClick: this.showQr, className: 'button button-instance' },
+	        { id: 'qr', onClick: this.toggleQr, className: 'button button-instance' },
 	        'QR'
 	      ),
 	      React.createElement(
