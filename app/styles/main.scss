@@ -203,7 +203,7 @@ header {
       transition: transform 0.3s cubic-bezier(0.24,.85,.74,1);
     }
 
-    &.true {
+    &.online {
 
       &::before {
 
@@ -211,7 +211,7 @@ header {
       }
     }
 
-    &.false {
+    &.offline {
 
       &::before {
 
@@ -233,7 +233,7 @@ header {
 
     a {
 
-      width: calc(100% - 200px);
+      width: calc(100% - 270px);
       font-size: 20px;
       color: #000;
       text-decoration: none;
@@ -242,7 +242,7 @@ header {
       line-height: 60px;
     }
 
-    img{
+    .qrImage {
 
       position: fixed;
       top: 50%;
@@ -254,6 +254,16 @@ header {
 
         visibility: visible;
       }
+    }
+
+    .icon {
+
+      position: absolute;
+      width: 20px;
+      height: auto;
+      top: 50%;
+      left: 50%;
+      @include transform(translate(-50%, -50%));
     }
   }
 }
@@ -267,6 +277,7 @@ header {
   cursor: pointer;
   line-height: 55px;
   text-align: center;
+  position: relative;
 
   & + & {
 
