@@ -33972,23 +33972,27 @@
 	      ),
 	      React.createElement(
 	        'div',
-	        { id: 'start', onClick: this.start, className: 'button button-instance' },
-	        React.createElement('img', { className: 'icon', src: 'assets/play.svg', width: '30px', height: '30px' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { id: 'stop', onClick: this.stop, className: 'button button-instance' },
-	        React.createElement('img', { className: 'icon', src: 'assets/stop.svg', width: '30px', height: '30px' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { id: 'qr', onClick: this.toggleQr, className: 'button button-instance' },
-	        'QR'
-	      ),
-	      React.createElement(
-	        'div',
-	        { id: 'remove', onClick: this.remove, className: 'button button-instance' },
-	        React.createElement('img', { className: 'icon', src: 'assets/delete.svg', width: '30px', height: '30px' })
+	        { className: 'button-wrapper' },
+	        React.createElement(
+	          'div',
+	          { id: 'start', onClick: this.start, className: 'button button-instance' },
+	          React.createElement('img', { className: 'icon', src: 'assets/play.svg' })
+	        ),
+	        React.createElement(
+	          'div',
+	          { id: 'stop', onClick: this.stop, className: 'button button-instance' },
+	          React.createElement('img', { className: 'icon', src: 'assets/stop.svg' })
+	        ),
+	        React.createElement(
+	          'div',
+	          { id: 'qr', onClick: this.toggleQr, className: 'button button-instance' },
+	          'QR'
+	        ),
+	        React.createElement(
+	          'div',
+	          { id: 'remove', onClick: this.remove, className: 'button button-instance' },
+	          React.createElement('img', { className: 'icon', src: 'assets/delete.svg', width: '30px', height: '30px' })
+	        )
 	      ),
 	      React.createElement(
 	        'div',

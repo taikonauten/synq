@@ -49,10 +49,12 @@ module.exports = React.createClass({
     return (
       <li key={page.url} className={page.active ? 'online': 'offline'}>
         <a href={page.external} target="_blank">{page.url}</a>
-        <div id="start" onClick={this.start}  className="button button-instance"><img className="icon" src="assets/play.svg" width="30px" height="30px" /></div>
-        <div id="stop" onClick={this.stop}   className="button button-instance"><img className="icon" src="assets/stop.svg" width="30px" height="30px" /></div>
-        <div id="qr" onClick={this.toggleQr}  className="button button-instance">QR</div>
-        <div id="remove" onClick={this.remove} className="button button-instance"><img className="icon" src="assets/delete.svg" width="30px" height="30px" /></div>
+        <div className="button-wrapper">
+          <div id="start" onClick={this.start}  className="button button-instance"><img className="icon" src="assets/play.svg" /></div>
+          <div id="stop" onClick={this.stop}   className="button button-instance"><img className="icon" src="assets/stop.svg" /></div>
+          <div id="qr" onClick={this.toggleQr}  className="button button-instance">QR</div>
+          <div id="remove" onClick={this.remove} className="button button-instance"><img className="icon" src="assets/delete.svg" width="30px" height="30px" /></div>
+        </div>
         <div className={this.state.showQr ? 'qrImage active': 'qrImage'} onClick={this.hideQr}>
           <img src={page.qr} />
         </div>
