@@ -60,7 +60,8 @@ elements-of-type(html5-block) {
 
 html, body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  z-index: 0; }
 
 body, input, textarea, keygen, select, button {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -79,7 +80,12 @@ header {
     display: block; }
 
 .creator {
-  margin: 25px auto 50px; }
+  margin: 25px auto 50px;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
   .creator-container {
     width: 80%;
     margin: 0 auto;
@@ -143,7 +149,6 @@ header {
     font-weight: 600;
     font-size: 32px;
     transform: translateX(-50px) scale(0.6);
-    z-index: -1;
     position: absolute;
     transition: transform 0.3s 0.1s cubic-bezier(0.14, 0.74, 0.65, 1.4); }
     .creator .button:focus {

@@ -33,6 +33,7 @@ html, body {
 
   margin: 0;
   padding: 0;
+  z-index: 0;
 }
 
 body, input, textarea, keygen, select, button {
@@ -64,6 +65,7 @@ header {
 .creator {
 
   margin: 25px auto 50px;
+  @include transform(translate3d(0,0,0));
 
   &-container {
 
@@ -124,7 +126,6 @@ header {
     font-weight: 600;
     font-size: 32px;
     transform: translateX(-50px) scale(0.6);
-    z-index: -1;
     position: absolute;
 
     transition: transform 0.3s 0.1s cubic-bezier(.14,.74,.65,1.4);
