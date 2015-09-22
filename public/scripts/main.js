@@ -33967,7 +33967,7 @@
 	      { key: page.url, className: page.active ? 'online' : 'offline' },
 	      React.createElement(
 	        'a',
-	        { href: page.external, target: '_blank' },
+	        { href: "http://synq.taikocloud.com:" + page.port, target: '_blank' },
 	        page.url
 	      ),
 	      React.createElement(

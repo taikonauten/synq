@@ -48,7 +48,7 @@ module.exports = React.createClass({
 
     return (
       <li key={page.url} className={page.active ? 'online': 'offline'}>
-        <a href={page.external} target="_blank">{page.url}</a>
+        <a href={"http://synq.taikocloud.com:"+page.port} target="_blank">{page.url}</a>
         <div id="start" onClick={this.start}  className="button button-instance"><img className="icon" src="assets/play.svg" width="30px" height="30px" /></div>
         <div id="stop" onClick={this.stop}   className="button button-instance"><img className="icon" src="assets/stop.svg" width="30px" height="30px" /></div>
         <div id="qr" onClick={this.toggleQr}  className="button button-instance">QR</div>
