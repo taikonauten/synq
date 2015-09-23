@@ -280,7 +280,7 @@ header {
       width: 11px;
       height: 11px;
       position: absolute;
-      margin-top: 25px;
+      margin-top: 20px;
       -webkit-transform: translateX(-20px) rotate(50deg);
       -moz-transform: translateX(-20px) rotate(50deg);
       -ms-transform: translateX(-20px) rotate(50deg);

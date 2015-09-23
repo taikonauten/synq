@@ -272,7 +272,7 @@ header {
       width: 11px;
       height: 11px;
       position: absolute;
-      margin-top: 25px;
+      margin-top: 20px;
 
       @include transform(translateX(-20px) rotate(50deg));
       @include transition(transform 0.3s cubic-bezier(0.24,.85,.74,1));
